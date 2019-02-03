@@ -1,5 +1,8 @@
 # shopping_cart.py
 
+
+import datetime
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -23,43 +26,34 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-
-
-
-
-x = 1
-
 running_total = 0
 
 itemsOrdered = []
 
-print("Please input a product identifier, or DONE if there are no more items: ")
-userEntry = input()
+while True:
+    selected_id = input("Please input a product identifier, or DONE if there are no more items: ")
+    if selected_id == "DONE":
+        break
+    else:
+        itemsOrdered.append(selected_id)
 
-while userEntry != "DONE": # todo: restore infinite looping condition
-    itemsOrdered.append(userEntry)
-    print("Please input a product identifier, or DONE if there are no more items: ")
-    userEntry = input()
-
-
-    selected_id = 1 # input("Please select a product id (1-20)")
-    #product = {
-    #    "id":1,
-    #    "name": "Chocolate Sandwich Cookies",
-    #    "department": "snacks",
-    #    "aisle": "cookies cakes",
-    #    "price": 3.50
-    #}
-    matching_products = [p for p in products if p["id"] == selected_id]
-    product = matching_products[0]
-    price = product["price"] #4.95 # todo: lookup actual price of the scanned/selected product
-    running_total = running_total + price
-    x = x + 1
-
-for p in itemsOrdered:
-    print(p)
-
-
-print("THE TOTAL PRICE IS: " + str(running_total))
-
-# todo: calculate tax, add tax + total
+print("---------------------------------")
+print("MUCH GOOD GROCERY")
+print("WWW.MUCHGOODVERYNICE.COM")
+print("---------------------------------")
+print("CHECKOUT AT: **USE DATETIME**")
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
+for each in itemsOrdered:
+    matching_products = [p for p in products if str(p["id"]) == str(each)]
+    matching_product = matching_products[0]
+    running_total = running_total + matching_product["price"]
+    number_to_print = "(${0:.2f})".format(matching_product["price"])
+    print("+ " + matching_product["name"] + " " + str(number_to_print))
+print("---------------------------------")
+print("SUBTOTAL: ", running_total)
+print("TAX: print tax")
+print("TOTAL: print total")
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------")
