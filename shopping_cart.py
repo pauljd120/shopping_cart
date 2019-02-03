@@ -41,7 +41,8 @@ print("---------------------------------")
 print("MUCH GOOD GROCERY")
 print("WWW.MUCHGOODVERYNICE.COM")
 print("---------------------------------")
-print("CHECKOUT AT: **USE DATETIME**")
+current_time = datetime.datetime.now()
+print("CHECKOUT AT: " + current_time.strftime("%x") + " " + current_time.strftime("%X") + " " + current_time.strftime("%p"))
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 for each in itemsOrdered:
@@ -51,9 +52,20 @@ for each in itemsOrdered:
     number_to_print = "(${0:.2f})".format(matching_product["price"])
     print("+ " + matching_product["name"] + " " + str(number_to_print))
 print("---------------------------------")
+
+
+tax = running_total * .06
+total = running_total + tax
+
+
+running_total = "${0:.2f}".format(running_total)
+tax = "${0:.2f}".format(tax)
+total = "${0:.2f}".format(total)
+
+
 print("SUBTOTAL: ", running_total)
-print("TAX: print tax")
-print("TOTAL: print total")
+print("TAX: " + str(tax))
+print("TOTAL: " + str(total))
 print("---------------------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
 print("---------------------------------")
