@@ -23,12 +23,25 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+
+
+
+
 x = 1
 
 running_total = 0
 
-while x < 5: # todo: restore infinite looping condition
-    # todo: ask the user to input a product id
+itemsOrdered = []
+
+print("Please input a product identifier, or DONE if there are no more items: ")
+userEntry = input()
+
+while userEntry != "DONE": # todo: restore infinite looping condition
+    itemsOrdered.append(userEntry)
+    print("Please input a product identifier, or DONE if there are no more items: ")
+    userEntry = input()
+
+
     selected_id = 1 # input("Please select a product id (1-20)")
     #product = {
     #    "id":1,
@@ -42,6 +55,9 @@ while x < 5: # todo: restore infinite looping condition
     price = product["price"] #4.95 # todo: lookup actual price of the scanned/selected product
     running_total = running_total + price
     x = x + 1
+
+for p in itemsOrdered:
+    print(p)
 
 
 print("THE TOTAL PRICE IS: " + str(running_total))
